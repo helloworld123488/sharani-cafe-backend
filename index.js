@@ -76,6 +76,10 @@ app.post('/api/reserve', async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 4000, () => {
-  console.log('Reservation server running');
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(process.env.PORT || 4000, () => {
+    console.log('Reservation server running');
+  });
+}
+
+export default app;
